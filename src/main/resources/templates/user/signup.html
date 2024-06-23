@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="#{user.signup.title}">Signup</title>
+    <!-- Read CSS, JS -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/user/signup.css}">
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center" th:text="#{user.signup.title}">User Signup</h2>
+        <form action="/user/signup" method="POST" id="signup-form" class="form-signup" th:object="${signupForm}">
+            <!-- Name -->
+            <div class="mb-3">
+                <label for="name" class="form-label" th:text="#{user.signup.label.username}">Name</label>
+                <input type="text" class="form-control" name="name" id="name" th:field="*{username}" th:errorclass="is-invalid">
+                <p class="text-muted small">Input your full name</p>
+                <div class="invalid-feedback" th:errors="*{username}"></div>
+            </div>
+            <!-- User ID -->
+            <div class="mb-3">
+                <label for="userId" class="form-label" th:text="#{user.signup.label.id}">User ID</label>
+                <input type="text" class="form-control" name="userId" id="userId" th:field="*{userId}" th:errorclass="is-invalid">
+                <div class="invalid-feedback" th:errors="*{userId}"></div>
+            </div>
+            <!-- Password -->
+            <div class="mb-3">
+                <label for="password" class="form-label" th:text="#{user.signup.label.password}">Password</label>
+                <input type="password" class="form-control" name="password" id="password" th:field="*{password}" th:errorclass="is-invalid">
+                <div class="invalid-feedback" th:errors="*{password}"></div>
+            </div>
+            <!-- Confirm Password -->
+            <div class="mb-3">
+                <label for="confirm" class="form-label" th:text="#{user.signup.label.confirm}">Confirm Password</label>
+                <input type="password" class="form-control" name="confirm" id="confirm" th:field="*{confirmPassword}" th:errorclass="is-invalid">
+                <div class="invalid-feedback" th:errors="*{confirmPassword}"></div>
+            </div>
+            <!-- Birthday -->
+            <div class="mb-3">
+                <label for="birthday" class="form-label" th:text="#{user.signup.label.birthdate}">Birthday</label>
+                <input type="date" class="form-control" name="dateOfBirth" id="birthday" placeholder="dd/MM/yyyy" th:field="*{dateOfBirth}" th:errorclass="is-invalid">
+                <div class="invalid-feedback" th:errors="*{dateOfBirth}"></div>
+            </div>
+            <!-- Age -->
+            <div class="mb-3">
+                <label for="age" class="form-label" th:text="#{user.signup.label.age}">Age</label>
+                <input type="number" class="form-control" name="age" id="age" th:field="*{age}" th:errorclass="is-invalid">
+                <div class="invalid-feedback" th:errors="*{age}"></div>
+            </div>
+            <!-- Gender -->
+            <div class="mb-3">
+                <div class="form-check-inline" th:each="gender : ${genders}">
+                    <input type="radio" class="form-check-input"
+                           th:value="${gender.value}"
+                           th:id="${gender.key.toLowerCase()}"
+                           th:field="*{gender}"
+                           th:errorclass="is-invalid">
+                    <label class="form-check-label"
+                           th:text="${gender.key}"
+                           th:for="${gender.key.toLowerCase()}"></label>
+                </div>
+                <div class="text-danger small" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mt-3" th:text="#{user.signup.button}">Signup</button>
+        </form>
+    </div>
+</body>
+</html>
