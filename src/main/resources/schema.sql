@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS m_user (
     user_name VARCHAR(50),
     password VARCHAR(20),
     confirm_password VARCHAR(20),
-    dob DATE,
+    date_of_birth DATE,
     age INT,
     gender INT,
     department_id INT,

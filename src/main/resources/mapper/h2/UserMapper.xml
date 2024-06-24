@@ -7,7 +7,7 @@
                             user_name,
                             password,
                             confirm_password,
-                            dob,
+                            date_of_birth,
                             age,
                             gender,
                             department_id,
@@ -22,4 +22,8 @@
                 #{departmentId},
                 #{role})
     </insert>
+
+    <select id="findAll" resultType="MUser">
+        SELECT * FROM m_user
+    </select>
 </mapper>

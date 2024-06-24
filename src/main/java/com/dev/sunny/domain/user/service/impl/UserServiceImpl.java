@@ -6,6 +6,8 @@ import com.dev.sunny.repository.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -18,5 +20,10 @@ public class UserServiceImpl implements UserService {
         user.setRole("ROLE_GENERAL");
 
         this.mapper.insertOne(user);
+    }
+
+    @Override
+    public List<MUser> getUsers() {
+        return this.mapper.findAll();
     }
 }
