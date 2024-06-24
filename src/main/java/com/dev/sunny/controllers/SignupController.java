@@ -1,10 +1,13 @@
 package com.dev.sunny.controllers;
 
+import com.dev.sunny.domain.user.model.MUser;
+import com.dev.sunny.domain.user.service.UserService;
 import com.dev.sunny.form.SignupForm;
 import com.dev.sunny.service.UserApplicationService;
 import com.dev.sunny.validations.GroupOrder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +27,8 @@ import java.util.Map;
 public class SignupController {
 
     private final UserApplicationService userService;
+    private final UserService jpaUserService;
+    private final ModelMapper modelMapper;
 
     /**
      * Display the user signup screen
@@ -58,6 +63,13 @@ public class SignupController {
         }
 
         log.info("signupForm: {}", signupForm);
+
+        // Convert form data to entity
+        MUser user = this.modelMapper.map(signupForm, MUser.class);
+
+        // Register user
+        this.jpaUserService.signUp(user);
+
         return "redirect:/login";
     }
 }

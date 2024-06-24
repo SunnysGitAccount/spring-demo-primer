@@ -12,6 +12,7 @@ import java.util.Date;
 @Data
 public class SignupForm {
     @NotBlank(groups = {FirstOrder.class})
+    @Email(groups = {SecondOrder.class})
     private String userId;
 
     @NotBlank(groups = {FirstOrder.class})
