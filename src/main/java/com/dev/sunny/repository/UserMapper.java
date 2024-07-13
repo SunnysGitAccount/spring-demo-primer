@@ -10,5 +10,6 @@ public interface UserMapper {
 
     void insertOne(MUser user);
     List<MUser> findAll();
+    MUser findOne(String userId);
 
 }

@@ -25,6 +25,7 @@
                         <th>Date of Birth</th>
                         <th>Age</th>
                         <th>Gender</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,9 @@
                         <td th:text="${#dates.format(user.dateOfBirth, 'dd/MM/YYYY')}"></td>
                         <td th:text="${user.age}" />
                         <td th:text="${user.gender == 1} ? 'Male' : 'Female'" />
+                        <td>
+                            <a th:href="@{'/user/detail/' + ${user.userId}}" class="btn btn-primary">Details</a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

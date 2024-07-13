@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+    <link rel="stylesheet" th:href="@{/css/user/list.css}">
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="header border-bottom">
+        <h2 class="h2">User Details</h2>
+    </div>
+
+    <form id="user-detail-form" method="post" th:action="@{/user/detail}" class="form-signup" th:object="${userDetailForm}">
+        <table class="table table-hover table-striped">
+            <tbody>
+                <tr>
+                    <td><label for="email">User ID</label></td>
+                    <td><input type="email" id="email" class="form-control" th:field="*{userId}" /></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password</label></td>
+                    <td><input type="password" id="password" class="form-control" th:field="*{password}" /></td>
+                </tr>
+                <tr>
+                    <td><label for="name">User Name</label></td>
+                    <td><input type="text" id="name" class="form-control" th:text="${userDetailForm.userName}" /></td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td th:text="${#dates.format(userDetailForm.dateOfBirth, 'dd/MM/YYYY')}"></td>
+                </tr>
+                <tr>
+                    <td>Age</td>
+                    <td th:text="${userDetailForm.age}" />
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td th:text="${userDetailForm.gender == 1} ? 'Male' : 'Female'" />
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>

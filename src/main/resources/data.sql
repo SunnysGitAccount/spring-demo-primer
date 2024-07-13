@@ -13,8 +13,7 @@ VALUES ('admin@gmail.com', 'System Admin', 'Admin@123', 'Admin@123', '1994-01-01
 INSERT INTO m_department (department_id,
                           department_name)
 VALUES (1, 'Development'),
-       (2, 'Testing')
-;
+       (2, 'Testing');
 
 INSERT INTO t_salary (user_id,
                       `year_month`,

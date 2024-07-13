@@ -26,4 +26,9 @@ public class UserServiceImpl implements UserService {
     public List<MUser> getUsers() {
         return this.mapper.findAll();
     }
+
+    @Override
+    public MUser getUserById(String userId) {
+        return this.mapper.findOne(userId);
+    }
 }
