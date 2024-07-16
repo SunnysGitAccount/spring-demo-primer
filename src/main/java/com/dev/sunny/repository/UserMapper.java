@@ -2,6 +2,7 @@ package com.dev.sunny.repository;
 
 import com.dev.sunny.domain.user.model.MUser;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,5 +12,9 @@ public interface UserMapper {
     void insertOne(MUser user);
     List<MUser> findAll();
     MUser findOne(String userId);
+    void updateOne(@Param("userId") String userId,
+                   @Param("password") String password,
+                   @Param("userName") String userName);
+    int deleteOne(@Param("userId") String userId);
 
 }

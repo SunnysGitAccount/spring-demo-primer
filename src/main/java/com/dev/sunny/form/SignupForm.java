@@ -16,7 +16,7 @@ public class SignupForm {
     private String userId;
 
     @NotBlank(groups = {FirstOrder.class})
-    private String username;
+    private String userName;
 
     @NotBlank(groups = {FirstOrder.class})
     @Length(min = 8, max = 20, groups = {FirstOrder.class})

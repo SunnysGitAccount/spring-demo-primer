@@ -4,12 +4,14 @@ import com.dev.sunny.domain.user.model.MUser;
 import com.dev.sunny.domain.user.service.UserService;
 import com.dev.sunny.repository.UserMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     private final UserMapper mapper;
@@ -30,5 +32,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public MUser getUserById(String userId) {
         return this.mapper.findOne(userId);
+    }
+
+    @Override
+    public void updateUser(String userId, String password, String userName) {
+        this.mapper.updateOne(userId, password, userName);
+    }
+
+    @Override
+    public void deleteUser(String userId) {
+        int count = this.mapper.deleteOne(userId);
+        if (count > 0) {
+            log.info("Delete success");
+        } else {
+            log.info("Delete failed");
+        }
     }
 }

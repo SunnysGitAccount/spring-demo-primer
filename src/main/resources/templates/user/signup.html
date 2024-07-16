@@ -18,9 +18,9 @@
             <!-- Name -->
             <div class="mb-3">
                 <label for="name" class="form-label" th:text="#{user.signup.label.username}">Name</label>
-                <input type="text" class="form-control" name="name" id="name" th:field="*{username}" th:errorclass="is-invalid">
+                <input type="text" class="form-control" name="name" id="name" th:field="*{userName}" th:errorclass="is-invalid">
                 <p class="text-muted small">Input your full name</p>
-                <div class="invalid-feedback" th:errors="*{username}"></div>
+                <div class="invalid-feedback" th:errors="*{userName}"></div>
             </div>
             <!-- User ID -->
             <div class="mb-3">

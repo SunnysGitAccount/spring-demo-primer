@@ -7,7 +7,7 @@ import java.util.Date;
 @Data
 public class MUser {
     private String userId;
-    private String username;
+    private String userName;
     private String password;
     private String confirmPassword;
     private Date dateOfBirth;
